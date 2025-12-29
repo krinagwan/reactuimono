@@ -1,0 +1,23 @@
+name : demo 
+on: workflow_dispatch
+
+jobs:
+  one:
+    name: onejob
+    runs-on: ubuntu_latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6.0.1
+      
+    - name: Setup NodeJS environment with a Cache
+  # You may pin to the exact commit or the version.
+  # uses: gacts/setup-node-with-cache@624bb72adfed6b190561a8544d80f789135e462d
+      uses: gacts/setup-node-with-cache@v1.2.2
+      with:
+        # The Node version to download (if necessary) and use. Supports semver spec and ranges
+        node-version: 16.x
+        
+    - name:  build dependancy
+      run: |
+        npm install
+        npm run build
