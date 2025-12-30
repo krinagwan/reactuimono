@@ -1,11 +1,19 @@
 name : demo 
 on: workflow_dispatch
 
+env:
+  NAME: krishan devops
+  
 jobs:
   one:
     name: onejob
     runs-on: ubuntu-latest
+    
     steps:
+    - name: print the env name
+      run: |
+        echo $NAME
+        
     - name: Checkout
       uses: actions/checkout@v6.0.1
       
@@ -28,3 +36,11 @@ jobs:
         # Artifact name
         name: artifactreact
         path: build/
+        
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v7.0.0
+      with:
+        # Name of the artifact to download. If unspecified, all artifacts for the run are downloaded.
+        name: artifactreact
+      
+        path: downloaded_build/     
