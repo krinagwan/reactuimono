@@ -26,6 +26,7 @@ jobs:
         node-version: 16.x
         
     - name: Build dependency
+      working-directory: reactuimono  
       run: |
         npm install
         CI=false npm run build  # prevents warnings-as-error locally
@@ -35,7 +36,7 @@ jobs:
       with:
         # Artifact name
         name: artifactreact
-        path: build/
+        path: reactuimono/build/ 
         
     - name: Download a Build Artifact
       uses: actions/download-artifact@v7.0.0
