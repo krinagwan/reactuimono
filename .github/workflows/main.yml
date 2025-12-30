@@ -28,7 +28,6 @@ jobs:
     - name: Build dependency
       working-directory: ${{ github.workspace }}   # ✔ this is repo root
       run: |
-        cd reactuimono/reactuimono  # ✔ move into actual app folder
         npm install
         CI=false npm run build  # prevents warnings-as-error locally
 
@@ -37,7 +36,7 @@ jobs:
       with:
         # Artifact name
         name: artifactreact
-        path: ${{ github.workspace }}/reactuimono/reactuimono/build/
+        path: build/
         
     - name: Download a Build Artifact
       uses: actions/download-artifact@v7.0.0
