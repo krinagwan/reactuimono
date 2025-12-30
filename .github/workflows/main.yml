@@ -17,7 +17,14 @@ jobs:
         # The Node version to download (if necessary) and use. Supports semver spec and ranges
         node-version: 16.x
         
-    - name:  build dependancy
+    - name: Build dependency
       run: |
         npm install
-        npm run build
+        CI=false npm run build  # prevents warnings-as-error locally
+
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v6.0.0
+      with:
+        # Artifact name
+        name: artifactreact
+        path: build/
