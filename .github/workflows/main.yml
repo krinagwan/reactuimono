@@ -1,4 +1,4 @@
-name : demo 
+name : App pipelie React
 on: workflow_dispatch
 
 env:
@@ -41,6 +41,7 @@ jobs:
   Deployjob:
     name: Deployjob
     runs-on: ubuntu-latest
+    needs: Buildjob 
     
     steps:
     - name: Download a Build Artifact
